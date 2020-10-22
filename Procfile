@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath src reserway.wsgi
+web: gunicorn --pythonpath reserway reserway.wsgi
