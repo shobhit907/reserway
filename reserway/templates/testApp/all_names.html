@@ -4,3 +4,5 @@
 {% for row in all_names %}
     <li>ID is : <b>{{row.id}}</b>  and name is <b>{{row.name}}</b></li>
 {% endfor %}
+<br><br>
+<a href="{% url 'testApp:index' %}">Go to input name</a>
