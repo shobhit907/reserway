@@ -22,10 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 json_data=None
-with open(os.path.join(BASE_DIR,"keys.json")) as f:
-   json_data=json.load(f)
+if os.path.isfile(os.path.join(BASE_DIR,"keys.json")):
+    with open(os.path.join(BASE_DIR,"keys.json")) as f:
+       json_data=json.load(f)
+       SECRET_KEY=json_data["SECRET_KEY"]
 
-SECRET_KEY=json_data['SECRET_KEY'] 
+if "SECRET_KEY" in os.environ:
+    SECRET_KEY=os.environ["SECRET_KEY"]
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
@@ -85,12 +88,18 @@ WSGI_APPLICATION = 'reserway.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+def provideValue(key):
+    if json_data==None:
+        return ''
+    else:
+        return json_data[key]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': json_data["DB_NAME"],
-        'USER': json_data["DB_USER"],
-        'PASSWORD': json_data["DB_PASSWORD"],
+        'NAME': provideValue("DB_NAME"),
+        'USER': provideValue("DB_USER"),
+        'PASSWORD': provideValue("DB_PASSWORD"),
         'HOST': '',
         'PORT': '',
     }
