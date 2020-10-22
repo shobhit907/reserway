@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath reserway reserway.wsgi --log-file-
