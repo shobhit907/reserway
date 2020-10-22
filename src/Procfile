@@ -1,0 +1,1 @@
+web: gunicorn reserway.wsgi --log-file-
