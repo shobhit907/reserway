@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
 
     'testApp',
-    'accounts'
+    'accounts',
+    'bookings'
 ]
 
 MIDDLEWARE = [
