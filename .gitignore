@@ -5,3 +5,4 @@ keys.json
 *.log
 *.pot
 *.pyc
+.vscode
