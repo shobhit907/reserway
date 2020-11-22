@@ -8,3 +8,9 @@ Hello from home.html
     <a href="{% url 'accounts:signup' %}">Signup</a>
     <a href="{% url 'accounts:login' %}">Login</a>
 {%endif%}
+
+<div>
+    <form>
+        {% csrf_token %}
+    </form>
+</div>

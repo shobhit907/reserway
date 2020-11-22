@@ -25,3 +25,4 @@ def PassengerDetailsFormPage(request):
         form = PassengerDetailsForm()
 
     return render(request, 'bookings/passenger_details_form.html', {'form': form})
+
