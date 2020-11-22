@@ -9,4 +9,5 @@ class BookingAgent(models.Model):
 
     def __str__(self):
         return str(self.user.id)+"  "+self.user.first_name+" "+self.user.last_name+self.user.username
-
+    REQUIRED_FIELDS = ['user.booking_agent.username', 'email']
+    USERNAME_FIELD='user.booking_agent.username'
