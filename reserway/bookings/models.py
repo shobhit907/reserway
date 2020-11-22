@@ -47,12 +47,12 @@ class Ticket (models.Model):
     ticketId = models.AutoField(primary_key=True)
     pnrNumber = models.CharField(max_length=12)
     booking_agent = models.ForeignKey(BookingAgent, on_delete=models.CASCADE, blank = False, null = False,related_name='tickets')
-    passenger1 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = False, null = True,related_name='ticket1')
-    passenger2 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = False, null = True,related_name='ticket2')
-    passenger3 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = False, null = True,related_name='ticket3')
-    passenger4 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = False, null = True,related_name='ticket4')
-    passenger5 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = False, null = True,related_name='ticket5')
-    passenger6 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = False, null = True,related_name='ticket6')
+    passenger1 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = False, null = False,related_name='ticket1')
+    passenger2 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = True, null = True,related_name='ticket2')
+    passenger3 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = True, null = True,related_name='ticket3')
+    passenger4 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = True, null = True,related_name='ticket4')
+    passenger5 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = True, null = True,related_name='ticket5')
+    passenger6 = models.OneToOneField(Passenger, on_delete=models.CASCADE, blank = True, null = True,related_name='ticket6')
 
     def __str__ (self):
         return str(self.ticketId) + " " + self.pnrNumber
