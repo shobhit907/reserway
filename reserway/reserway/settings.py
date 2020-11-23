@@ -42,6 +42,8 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','reserway.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,7 +52,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
 
-    'testApp'
+    'testApp',
+    'bookings',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +87,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'reserway.wsgi.application'
-
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -116,18 +120,18 @@ DATABASES['default'].update(db_from_env)
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 
@@ -155,3 +159,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'reserway/static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL='bookings:home'
+LOGOUT_REDIRECT_URL='bookings:home'
