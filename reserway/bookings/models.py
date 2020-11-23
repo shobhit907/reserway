@@ -29,7 +29,7 @@ class Train(models.Model):
 class TrainSchedule(models.Model):
     journey_id = models.AutoField(primary_key=True)
     train = models.ForeignKey(Train, on_delete=models.CASCADE, blank=False, null=False)
-    journey_date = models.DateTimeField(blank=False, null=False)
+    journey_date = models.DateField(blank=False, null=False)
     num_ac_coaches = models.IntegerField(
         validators=[MaxValueValidator(100), MinValueValidator(1)], default=10
     )

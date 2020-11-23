@@ -10,7 +10,14 @@ Hello from home.html
 {%endif%}
 
 <div>
-    <form>
+        
+    <form action="" method="POST">
         {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
     </form>
 </div>
+{{query}}<p></p>
+{% for row in trains %}
+<p>{{row}}</p>
+{% endfor %}

@@ -5,5 +5,5 @@ app_name='bookings'
 
 urlpatterns = [
     path('',views.home,name='home'),
-    path('passenger_details_form/',views.PassengerDetailsFormPage,name='passenger_details_form')
+    path('passenger_details_form/',views.PassengerDetailsFormPage,name='passenger_details_form'),
 ]

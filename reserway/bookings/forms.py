@@ -1,4 +1,5 @@
 from django import forms
+from .models import Station
 
 class PassengerDetailsForm(forms.Form):
     passenger1Name = forms.CharField(label='Passenger 1 Name:', max_length=100)
@@ -19,3 +20,9 @@ class PassengerDetailsForm(forms.Form):
     passenger6Name = forms.CharField(label='Passenger 6 Name:', max_length=100, required=False)
     passenger6Age = forms.IntegerField(label='Pasenger 6 Age:', max_value=200, min_value=0, required=False)
     passenger6Gender = forms.ChoiceField(label="Passenger 6 Gender:", choices=[("M", "Male"), ("F", "Female"), ("O", "Other")], required=False)
+
+class SearchTrainsForm(forms.Form):
+    all_stations=Station.objects.all()
+    source_station=forms.ModelChoiceField(queryset=all_stations,blank=True,required=False)
+    dest_station=forms.ModelChoiceField(queryset=all_stations,blank=True,required=False)
+    date_of_journey=forms.DateField(widget=forms.widgets.DateTimeInput(attrs={"type":"date"}))
