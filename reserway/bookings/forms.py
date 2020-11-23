@@ -1,6 +1,19 @@
 from django import forms
 
+class TrainDetailsForm(forms.Form):
+    trainName = forms.CharField(label='Train Name:', max_length=100, required=True)
+    source = forms.CharField(label='Source:', max_length=100, required=True)
+    destination = forms.CharField(label='Destination:', max_length=100, required=True)
+
+class TrainScheduleForm(forms.Form):
+    train_name = forms.CharField(label='Train Name:', max_length=100, required=True)
+    journey_date=forms.DateTimeField(blank=false,null=false)
+    num_ac_coaches = forms.IntegerField(max_value=100, min_value=0,required=True)
+    num_sleeper_coaches = forms.IntegerField(max_value=100, min_value=0,required=True)
+
 class PassengerDetailsForm(forms.Form):
+    journey_id= forms.IntegerField("")
+    seat_type= forms.ChoiceField(label="Seat type:", choices=[("AC", "AC"), ("Sleeper", "Sleeper")])
     passenger1Name = forms.CharField(label='Passenger 1 Name:', max_length=100)
     passenger1Age = forms.IntegerField(label='Pasenger 1 Age:', max_value=200, min_value=0)
     passenger1Gender = forms.ChoiceField(label="Passenger 1 Gender:", choices=[("M", "Male"), ("F", "Female"), ("O", "Other")])
