@@ -1,0 +1,27 @@
+{% if permission %}
+Ticket Number:{{ticket.ticketId}}<br>
+PNR Number:{{ticket.pnrNumber}}<br>
+Train Name:{{ticket.journey.train.train_name}}<br>
+Train Number:{{ticket.journey.train.id}}<br>
+From Station:{{ticket.journey.train.source_station}}<br>
+To Station:{{ticket.journey.train.dest_station}}<br>
+<br>
+Passenger 1 : Name: {{ticket.passenger1.name}}&emsp; Age:{{ticket.passenger1.age}} &emsp; Gender:{{ticket.passenger1.gender}}<br>
+{% if ticket.passenger2 %}
+Passenger 2 : Name: {{ticket.passenger2.name}}&emsp; Age:{{ticket.passenger2.age}} &emsp; Gender:{{ticket.passenger2.gender}}<br>
+{% endif %}
+{% if ticket.passenger3 %}
+Passenger 3 : Name: {{ticket.passenger3.name}}&emsp; Age:{{ticket.passenger3.age}} &emsp; Gender:{{ticket.passenger3.gender}}<br>
+{% endif %}
+{% if ticket.passenger4 %}
+Passenger 4 : Name: {{ticket.passenger4.name}}&emsp; Age:{{ticket.passenger4.age}} &emsp; Gender:{{ticket.passenger4.gender}}<br>
+{% endif %}
+{% if ticket.passenger5 %}
+Passenger 5 : Name: {{ticket.passenger5.name}}&emsp; Age:{{ticket.passenger5.age}} &emsp; Gender:{{ticket.passenger5.gender}}<br>
+{% endif %}
+{% if ticket.passenger6 %}
+Passenger 6 : Name: {{ticket.passenger6.name}}&emsp; Age:{{ticket.passenger6.age}} &emsp; Gender:{{ticket.passenger6.gender}}<br>
+{% endif %}
+{% else %}
+You are not eligible to view this ticket
+{% endif %}

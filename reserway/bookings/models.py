@@ -59,6 +59,8 @@ class Passenger(models.Model):
 
 class Ticket(models.Model):
     ticketId = models.AutoField(primary_key=True)
+    journey=models.ForeignKey(TrainSchedule,on_delete=models.CASCADE,blank=False,null=True,related_name='tickets')
+    seat_type=models.CharField(max_length=10,default="AC")
     pnrNumber = models.CharField(max_length=12)
     booking_agent = models.ForeignKey(
         BookingAgent,
@@ -122,14 +124,14 @@ class BookingStatus(models.Model):
     noOfSleeperSeatsRemaining = models.IntegerField()
 
     def __str__(self):
-        return self.journey.journey_id
+        return str(self.journey.journey_id)
 
 
 class ACBookingStatus(models.Model):
     journey = models.ForeignKey(
         TrainSchedule, on_delete=models.CASCADE, blank=False, null=False
     )
-    coachNumber = models.CharField(max_length=5)
+    coachNumber = models.IntegerField()
     seatNumber = models.IntegerField()
     ticket = models.ForeignKey(
         Ticket, on_delete=models.CASCADE, blank=False, null=False
@@ -139,14 +141,14 @@ class ACBookingStatus(models.Model):
     )
 
     def __str__(self):
-        return str(self.journey.journey_id) + " " + self.coachNumber
+        return str(self.journey.journey_id) + " " + str(self.coachNumber)+" "+str(self.seatNumber)
 
 
 class SleeperBookingStatus(models.Model):
     journey = models.ForeignKey(
         TrainSchedule, on_delete=models.CASCADE, blank=False, null=False
     )
-    coachNumber = models.CharField(max_length=5)
+    coachNumber = models.IntegerField()
     seatNumber = models.IntegerField()
     ticket = models.ForeignKey(
         Ticket, on_delete=models.CASCADE, blank=False, null=False
@@ -156,7 +158,7 @@ class SleeperBookingStatus(models.Model):
     )
 
     def __str__(self):
-        return str(self.journey.journey_id) + " " + self.coachNumber
+        return str(self.journey.journey_id) + " " + self.coachNumber+" "+str(self.seatNumber)
 
 
 class CoachStructureAC(models.Model):

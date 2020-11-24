@@ -17,7 +17,11 @@ Hello from home.html
         <input type="submit" value="Submit">
     </form>
 </div>
-{{query}}<p></p>
-{% for row in trains %}
-<p>{{row}}</p>
+<p></p>
+{% for journey_id,train_id,train_name,rem_ac_seats,rem_sleeper_seats,journey_date,source_station,dest_station in trains %}
+Journey id : {{journey_id}} &emsp; Train name : {{train_name}} &emsp; AC Seats : {{rem_ac_seats}} &emsp; Sleeper Seats : {{rem_sleeper_seats}} &emsp; {{journey_date}} &emsp; {{source_station}} &emsp; {{dest_station}}
+<form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Book">
+</form>
 {% endfor %}

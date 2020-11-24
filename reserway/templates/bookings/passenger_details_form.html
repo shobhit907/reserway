@@ -1,5 +1,8 @@
-<form action="/passenger_details_form/" method="post">
+<form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="post">
     {% csrf_token %}
+    <label for="seatType">Seat Type: </label>
+    {{form.seat_type}}
+    <br>
     <label for="passenger1Name">Passenger 1 Name: </label>
     {{form.passenger1Name}}
     &emsp;
