@@ -54,7 +54,8 @@ INSTALLED_APPS = [
 
     'testApp',
     'bookings',
-    'crispy_forms'
+    'crispy_forms',
+    'f_search'
 ]
 
 MIDDLEWARE = [
