@@ -73,6 +73,7 @@ def DisplaySearchForm(request):
                 if (element != None):
                     context['direct_routes'].append((i, element[0], element[1]))
                     print(element[0].journey.j_id,element[0].journey.date,element[0].journey.train_name)
+                    i+=1
 
             so2=Routes.objects.raw('SELECT * from f_search_routes')
             do2=Routes.objects.raw('SELECT * from f_search_routes')
@@ -116,6 +117,7 @@ def DisplaySearchForm(request):
                     if item[1].journey.j_id!=over_item[1].journey.j_id:
                         context['break_routes'].append((i, item[0], item[1], over_item[0], over_item[1]))
                         print(s,item[1].journey.train_name,item[1].station_name,over_item[1].journey.train_name,d)
+                        i+=1
             return render(request, 'f_search/results.html', context)
     else:
         form=SearchForm()
