@@ -10,7 +10,6 @@ from .models import *
 import datetime
 
 # Create your views here.
-
 def home(request):
     context={}
     if request.method=='POST':

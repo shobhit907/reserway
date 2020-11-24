@@ -124,7 +124,7 @@ class BookingStatus(models.Model):
     noOfSleeperSeatsRemaining = models.IntegerField()
 
     def __str__(self):
-        return str(self.journey.journey_id)
+        return str(self.journey.journey_id)+" "+str(self.noOfACSeatsRemaining)+" "+str(self.noOfSleeperSeatsRemaining)
 
 
 class ACBookingStatus(models.Model):

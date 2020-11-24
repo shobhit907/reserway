@@ -1,0 +1,47 @@
+<b>Direct Routes:</b><br>
+<br>
+{%for e in direct_routes%}
+<u>Route {{e.0}}:</u><br>
+<br>
+Train Name: {{e.1.journey.train_name}} &emsp; Train Number: {{e.1.journey.train_id}}<br>
+<br>
+From Station: {{e.1.station_name}}<br>
+Arrival Date and Time at this station: {{e.1.arrival_time}}<br>
+Departure Date and Time from this station: {{e.1.departure_time}}<br>
+<br>
+To Station: {{e.2.station_name}}<br>
+Arrival Date and Time at this station: {{e.2.arrival_time}}<br>
+Departure Date and Time from this station: {{e.2.departure_time}}<br>
+<br>
+{%endfor%}
+<br>
+<b>One-break Routes:</b><br>
+<br>
+{%for e in break_routes%}
+<u>Route {{e.0}}:</u><br>
+<br>
+<i>Journey part 1</i>:<br>
+<br>
+Train Name: {{e.1.journey.train_name}} &emsp; Train Number: {{e.1.journey.train_id}}<br>
+<br>
+From Station: {{e.1.station_name}}<br>
+Arrival Date and Time at this station: {{e.1.arrival_time}}<br>
+Departure Date and Time from this station: {{e.1.departure_time}}<br>
+<br>
+To Station: {{e.2.station_name}}<br>
+Arrival Date and Time at this station: {{e.2.arrival_time}}<br>
+Departure Date and Time from this station: {{e.2.departure_time}}<br>
+<br>
+<i>Journey part 2:</i><br>
+<br>
+Train Name: {{e.3.journey.train_name}} &emsp; Train Number: {{e.3.journey.train_id}}<br>
+<br>
+From Station: {{e.3.station_name}}<br>
+Arrival Date and Time at this station: {{e.3.arrival_time}}<br>
+Departure Date and Time from this station: {{e.3.departure_time}}<br>
+<br>
+To Station: {{e.4.station_name}}<br>
+Arrival Date and Time at this station: {{e.4.arrival_time}}<br>
+Departure Date and Time from this station: {{e.4.departure_time}}<br>
+<br>
+{%endfor%}

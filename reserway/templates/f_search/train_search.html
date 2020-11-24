@@ -1,0 +1,5 @@
+<form action="/f_search/train_search/" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit">
+</form>
