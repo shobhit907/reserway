@@ -7,12 +7,11 @@ class TrainDetailsForm(forms.Form):
 
 class TrainScheduleForm(forms.Form):
     train_name = forms.CharField(label='Train Name:', max_length=100, required=True)
-    journey_date=forms.DateTimeField(blank=false,null=false)
+    journey_date=forms.DateTimeField()
     num_ac_coaches = forms.IntegerField(max_value=100, min_value=0,required=True)
     num_sleeper_coaches = forms.IntegerField(max_value=100, min_value=0,required=True)
 
 class PassengerDetailsForm(forms.Form):
-    journey_id= forms.IntegerField("")
     seat_type= forms.ChoiceField(label="Seat type:", choices=[("AC", "AC"), ("Sleeper", "Sleeper")])
     passenger1Name = forms.CharField(label='Passenger 1 Name:', max_length=100)
     passenger1Age = forms.IntegerField(label='Pasenger 1 Age:', max_value=200, min_value=0)

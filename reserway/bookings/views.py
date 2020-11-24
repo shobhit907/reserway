@@ -5,7 +5,6 @@ from .models import *
 import datetime
 
 # Create your views here.
-
 def home(request):
     return render(request,'bookings/home.html')
 
@@ -100,7 +99,7 @@ def PassengerDetailsFormPage(request):
                             passen=p5
                         if itr==5:
                             passen=p6
-                        ACBookingStatus.objects.create(journey=j_id,coachNumber=coach_number,seatNumber=seat_number,ticket=ticket,passen)
+                        ACBookingStatus.objects.create(journey=j_id,coachNumber=coach_number,seatNumber=seat_number,ticket=ticket,passenger=passen)
 
 
 
@@ -128,7 +127,7 @@ def PassengerDetailsFormPage(request):
                             passen=p5
                         if itr==5:
                             passen=p6
-                        SleeperBookingStatus.objects.create(journey=j_id,coachNumber=coach_number,seatNumber=seat_number,ticket=ticket,passen)
+                        SleeperBookingStatus.objects.create(journey=j_id,coachNumber=coach_number,seatNumber=seat_number,ticket=ticket,passenger=passen)
 
             # redirect to new page displaying ticket and then further options
             return HttpResponseRedirect('')

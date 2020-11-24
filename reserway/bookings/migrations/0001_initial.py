@@ -80,7 +80,7 @@ class Migration(migrations.Migration):
                 ('train', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='bookings.train')),
             ],
               options={
-            'managed': False,
+            'managed': True,
         },
         ),
         migrations.CreateModel(
