@@ -1,3 +1,5 @@
+<body bgcolor = "black">
+<font face = "Verdana" size = "5" color = "white">
 <b>Direct Routes:</b><br>
 <br>
 {%for e in direct_routes%}
@@ -44,4 +46,6 @@ To Station: {{e.4.station_name}}<br>
 Arrival Date and Time at this station: {{e.4.arrival_time}}<br>
 Departure Date and Time from this station: {{e.4.departure_time}}<br>
 <br>
+</font>
 {%endfor%}
+</body>
