@@ -1,0 +1,14 @@
+{% if user.is_authenticated %}
+{% for ticket in tickets %}
+<form action="{% url 'bookings:view_ticket' ticket_id=ticket.ticketId %}" method="post">
+    <li>{% csrf_token %}
+        PNR : {{ticket.pnrNumber}} &emsp; From : {{ticket.journey.train.source_station}} &emsp; To :
+        {{ticket.journey.train.dest_station}}
+        <input type="submit" value="View"></li>
+</form>
+{% empty %}
+You have not booked any tickets till now
+{% endfor %}
+{% else %}
+Please login to view your tickets
+{% endif %}

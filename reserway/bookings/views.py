@@ -158,3 +158,12 @@ def viewTicket(request,ticket_id):
         context['permission']=True
         context['ticket']=ticket
     return render(request,'bookings/ticket.html',context)
+
+
+def myTickets(request):
+    context={}
+    if request.user.is_authenticated:
+        tickets=Ticket.objects.filter(booking_agent=request.user.booking_agent)
+        context['tickets']=tickets
+        print(tickets)
+    return render(request,'bookings/my_tickets.html',context)
