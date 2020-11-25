@@ -1,12 +1,19 @@
-Hello from home.html
-
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6); background-repeat: no-repeat; height: 100%;}
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;  margin: 0; position: absolute; left: 42%;}
+    </style>
+</head>
 {%if user.is_authenticated%}
-   <p>LOGGED IN with username = {{user.username}}</p>
-   <a href="{% url 'accounts:logout' %}">Log Out</a>
+   <p>Welcome, {{user.username}}<br>
+   <a href="{% url 'accounts:logout' %}">(Log Out)</a></p>
 {%else%}
-    <p>You are not logged in</p>
-    <a href="{% url 'accounts:signup' %}">Signup</a>
-    <a href="{% url 'accounts:login' %}">Login</a>
+    <p>You are not logged in<br>
+    <a href="{% url 'accounts:signup' %}">(Signup</a>
+    OR
+    <a href="{% url 'accounts:login' %}">Login)</a></p>
 {%endif%}
 
 <div>

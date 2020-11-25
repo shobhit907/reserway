@@ -1,5 +1,25 @@
-<form action="/f_search/train_search/" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit">
-</form>
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6); background-repeat: no-repeat; height: 100%;}
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;  margin: 0; position: absolute; top: 35%; left: 30%;}
+    </style>
+</head>
+<body>
+    <div>
+        <h1>
+        <form action="/f_search/train_search/" method="POST">
+            {% csrf_token %}
+            <label for="form.source.id_for_label"><b>Source Station&emsp; &emsp;: &emsp;</b></label>
+            {{form.source}}
+            <br>
+            <br>
+            <label for="form.destination.id_for_label"><b>Destination Station:&emsp;</b></label>
+            {{form.destination}}
+            <br><br>
+            <input type="submit">
+        </form>
+        </h1>
+    </div>
+</body>
