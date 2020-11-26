@@ -1,0 +1,15 @@
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6); background-repeat: no-repeat; height: 100%;}
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;  margin: 0; position: absolute; top: 33%; left: 40%;}
+    </style>
+</head>
+<div>
+    <form action="/admin_release_train/" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </form>
+</div>

@@ -1,3 +1,14 @@
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6);}
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;  margin: 0; position: absolute; left: 25%;}
+    </style>
+</head>
+<body>
+    <div>
+<font face = "Verdana" size = "5" color = "black">
 <b>Direct Routes:</b><br>
 <br>
 {%for e in direct_routes%}
@@ -44,4 +55,7 @@ To Station: {{e.4.station_name}}<br>
 Arrival Date and Time at this station: {{e.4.arrival_time}}<br>
 Departure Date and Time from this station: {{e.4.departure_time}}<br>
 <br>
+</font>
+</div>
 {%endfor%}
+</body>

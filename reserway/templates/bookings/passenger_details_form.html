@@ -1,61 +1,63 @@
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6); background-repeat: no-repeat;text-align: center;margin: auto; padding-top: 10%;padding-bottom: 10%;}
+        div {padding: 10px;}
+    </style>
+</head>
+<div>
 <form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="post">
     {% csrf_token %}
-    <label for="seatType">Seat Type: </label>
-    {{form.seat_type}}
-    <br>
-    <label for="passenger1Name">Passenger 1 Name: </label>
-    {{form.passenger1Name}}
-    &emsp;
-    <label for="passenger1Age">Passenger 1 Age: </label>
-    {{form.passenger1Age}}
-    &emsp;
-    <label for="passenger1Gender">Passenger 1 Gender: </label>
-    {{form.passenger1Gender}}
-    <br>
-    <label for="passenger2Name">Passenger 2 Name: </label>
-    {{form.passenger2Name}}
-    &emsp;
-    <label for="passenger2Age">Passenger 2 Age: </label>
-    {{form.passenger2Age}}
-    &emsp;
-    <label for="passenger2Gender">Passenger 2 Gender: </label>
-    {{form.passenger2Gender}}
-    <br>
-    <label for="passenger3Name">Passenger 3 Name: </label>
-    {{form.passenger3Name}}
-    &emsp;
-    <label for="passenger3Age">Passenger 3 Age: </label>
-    {{form.passenger3Age}}
-    &emsp;
-    <label for="passenger3Gender">Passenger 3 Gender: </label>
-    {{form.passenger3Gender}}
-    <br>
-    <label for="passenger4Name">Passenger 4 Name: </label>
-    {{form.passenger4Name}}
-    &emsp;
-    <label for="passenger4Age">Passenger 4 Age: </label>
-    {{form.passenger4Age}}
-    &emsp;
-    <label for="passenger4Gender">Passenger 4 Gender: </label>
-    {{form.passenger4Gender}}
-    <br>
-    <label for="passenger5Name">Passenger 5 Name: </label>
-    {{form.passenger5Name}}
-    &emsp;
-    <label for="passenger5Age">Passenger 5 Age: </label>
-    {{form.passenger5Age}}
-    &emsp;
-    <label for="passenger5Gender">Passenger 5 Gender: </label>
-    {{form.passenger5Gender}}
-    <br>
-    <label for="passenger6Name">Passenger 6 Name: </label>
-    {{form.passenger6Name}}
-    &emsp;
-    <label for="passenger6Age">Passenger 6 Age: </label>
-    {{form.passenger6Age}}
-    &emsp;
-    <label for="passenger6Gender">Passenger 6 Gender: </label>
-    {{form.passenger6Gender}}
-    <br>
+    <div><label for="seatType">Seat Type: </label>
+        {{form.seat_type}}
+        </div>
+    <div><label for="passenger1Name">Passenger 1 Name: </label>
+        {{form.passenger1Name}}
+        &emsp;
+        <label for="passenger1Age">Passenger 1 Age: </label>
+        {{form.passenger1Age}}
+        &emsp;
+        <label for="passenger1Gender">Passenger 1 Gender: </label>
+        {{form.passenger1Gender}}</div>
+    <div><label for="passenger2Name">Passenger 2 Name: </label>
+        {{form.passenger2Name}}
+        &emsp;
+        <label for="passenger2Age">Passenger 2 Age: </label>
+        {{form.passenger2Age}}
+        &emsp;
+        <label for="passenger2Gender">Passenger 2 Gender: </label>
+        {{form.passenger2Gender}}</div>
+    <div><label for="passenger3Name">Passenger 3 Name: </label>
+        {{form.passenger3Name}}
+        &emsp;
+        <label for="passenger3Age">Passenger 3 Age: </label>
+        {{form.passenger3Age}}
+        &emsp;
+        <label for="passenger3Gender">Passenger 3 Gender: </label>
+        {{form.passenger3Gender}}</div>
+    <div><label for="passenger4Name">Passenger 4 Name: </label>
+        {{form.passenger4Name}}
+        &emsp;
+        <label for="passenger4Age">Passenger 4 Age: </label>
+        {{form.passenger4Age}}
+        &emsp;
+        <label for="passenger4Gender">Passenger 4 Gender: </label>
+        {{form.passenger4Gender}}</div>
+    <div><label for="passenger5Name">Passenger 5 Name: </label>
+        {{form.passenger5Name}}
+        &emsp;
+        <label for="passenger5Age">Passenger 5 Age: </label>
+        {{form.passenger5Age}}
+        &emsp;
+        <label for="passenger5Gender">Passenger 5 Gender: </label>
+        {{form.passenger5Gender}}</div>
+    <div><label for="passenger6Name">Passenger 6 Name: </label>
+        {{form.passenger6Name}}
+        &emsp;
+        <label for="passenger6Age">Passenger 6 Age: </label>
+        {{form.passenger6Age}}
+        &emsp;
+        <label for="passenger6Gender">Passenger 6 Gender: </label>
+        {{form.passenger6Gender}}</div>
     <input type="submit" value="Submit">
 </form>
+</div>

@@ -1,27 +1,38 @@
-
-{%if user.is_authenticated%}
-   <p>LOGGED IN with username = {{user.username}}</p>
-   <a href="{% url 'accounts:logout' %}">Log Out</a> &emsp;
-   <a href="{% url 'bookings:my_tickets' %}">My Tickets</a>
-{%else%}
-    <p>You are not logged in</p>
-    <a href="{% url 'accounts:signup' %}">Signup</a> &emsp;
-    <a href="{% url 'accounts:login' %}">Login</a>
-{%endif%}
-
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6); background-repeat: no-repeat;text-align: center;}
+    </style>
+</head>
 <div>
-        
+{%if user.is_authenticated%}
+   <p>Welcome, {{user.username}}<br>
+   <a href="{% url 'accounts:logout' %}">(Log Out)</a></br>
+   <a href="{% url 'bookings:my_tickets' %}">My Tickets</a></p>
+{%else%}
+    <p>You are not logged in<br>
+    <a href="{% url 'accounts:signup' %}">(Register</a>
+    OR
+    <a href="{% url 'accounts:login' %}">Login)</a></p>
+{% endif %}
+</div>
+<div>    
     <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="Submit">
+        <input type="submit" value="Check Trains">
     </form>
 </div>
-<p></p>
-{% for journey_id,train_id,train_name,rem_ac_seats,rem_sleeper_seats,journey_date,source_station,dest_station in trains %}
-Journey id : {{journey_id}} &emsp; Train name : {{train_name}} &emsp; AC Seats : {{rem_ac_seats}} &emsp; Sleeper Seats : {{rem_sleeper_seats}} &emsp; {{journey_date}} &emsp; {{source_station}} &emsp; {{dest_station}}
-<form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Book">
-</form>
-{% endfor %}
+<div class = "c2">
+    {% if POST %}
+    {% for journey_id,train_id,train_name,rem_ac_seats,rem_sleeper_seats,journey_date,source_station,dest_station in trains %}
+    Journey id : {{journey_id}} &emsp; Train name : {{train_name}} &emsp; From {{source_station}} To {{dest_station}} &emsp; AC Seats : {{rem_ac_seats}} &emsp; Sleeper Seats : {{rem_sleeper_seats}} 
+    <form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="POST">
+        {% csrf_token %}
+        <br>
+        <input type="submit" value="Book">
+    </form>
+    {% empty %}
+    Sorry for the inconvenience, no trains available for the selected date
+    {% endfor %}
+    {% endif %}
+</div>

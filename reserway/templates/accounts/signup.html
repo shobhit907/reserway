@@ -1,7 +1,12 @@
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6); background-repeat: no-repeat;text-align: center;}
+    </style>
+</head>
 {% load crispy_forms_tags %}
 <form action="/accounts/signup/" method="POST">
     {% csrf_token %}
     {{form.as_p }}
     {{booking_agent_form.as_p }}
-    <input type="submit">
+    <input type="submit" value="Register">
 </form>

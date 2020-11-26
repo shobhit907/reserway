@@ -5,7 +5,7 @@ import datetime,time
 from django.http import JsonResponse
 from .models import TrainSchedule,BookingStatus
 from django.shortcuts import render
-from .forms import PassengerDetailsForm,TrainScheduleForm
+from .forms import PassengerDetailsForm, AdminReleaseTrainForm
 from .models import * 
 import datetime
 
@@ -13,6 +13,7 @@ import datetime
 def home(request):
     context={}
     if request.method=='POST':
+        context['POST']=True
         form=SearchTrainsForm(request.POST)
         if form.is_valid():
             source_station=form.cleaned_data['source_station']
@@ -23,8 +24,7 @@ def home(request):
                 obj=obj.filter(train__source_station__name=source_station)
             if dest_station is not None:
                 obj=obj.filter(train__dest_station__name=dest_station)
-            obj=obj.filter(journey_date__gte=doj).order_by('journey_date')
-            print(source_station,dest_station,doj)
+            obj=obj.filter(journey_date=doj).order_by('journey_date')
             context['query']=form.cleaned_data
             context['trains']=[]
             for row in obj:
@@ -33,26 +33,6 @@ def home(request):
     form=SearchTrainsForm()
     context['form']=form
     return render(request,'bookings/home.html',context)
-
-
-def TrainJourneyFormPage(request):
-    if request.method == 'POST':
-        form = TrainScheduleForm(request.POST)
-        if form.is_valid():
-            t_name=forms.cleaned_data['train_name']
-            date=forms.cleaned_data['journey_date']
-            ac=forms.cleaned_data['num_ac_coaches']
-            sl=forms.cleaned_data['num_sleeper_coaches']
-            new_train=TrainSchedule.objects.create(train=t_name,journey_date=date,num_ac_coaches=ac,num_sleeper_coaches=sl)
-            j_id=new_train.journey_id
-            BookingStatus.objects.create(journey=j_id,noOfACSeatsRemaining=ac*18,noOfSleeperSeatsRemaining=sl*24)
-        
-        return HttpResponseRedirect('')
-
-    else:
-        form = TrainScheduleForm()
-
-    return render(request, 'bookings/train_journey.html', {'form': form})
 
 
 def PassengerDetailsFormPage(request,journey_id):
@@ -205,3 +185,23 @@ def myTickets(request):
         tickets=Ticket.objects.filter(booking_agent=request.user.booking_agent)
         context['tickets']=tickets
     return render(request,'bookings/my_tickets.html',context)
+
+def AdminReleaseTrain(request):
+    if request.method == 'POST':
+        form = AdminReleaseTrainForm(request.POST)
+        if form.is_valid():
+            p = TrainSchedule.objects.create(
+                train = form.cleaned_data['train'],
+                journey_date = form.cleaned_data['journey_date'],
+                num_ac_coaches = form.cleaned_data['num_ac_coaches'],
+                num_sleeper_coaches = form.cleaned_data['num_sleeper_coaches'],
+            )
+            p2 = BookingStatus.objects.create(
+                journey=p,
+                noOfACSeatsRemaining=p.num_ac_coaches * 18,
+                noOfSleeperSeatsRemaining=p.num_sleeper_coaches * 24,
+            )
+            return HttpResponseRedirect('/')
+    else:
+        form = AdminReleaseTrainForm()
+    return render(request, 'bookings/admin_release_train.html', {'form': form})
