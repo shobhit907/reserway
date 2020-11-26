@@ -7,7 +7,11 @@
 {%if user.is_authenticated%}
    <p>Welcome, {{user.username}}<br>
    <a href="{% url 'accounts:logout' %}">(Log Out)</a></br>
-   <a href="{% url 'bookings:my_tickets' %}">My Tickets</a></p>
+   <a href="{% url 'bookings:my_tickets' %}">My Tickets</a>
+   {% if user.is_superuser %}
+   &emsp;<a href="{% url 'bookings:admin_release_train' %}">Release Train</a>
+   {% endif %}
+</p>
 {%else%}
     <p>You are not logged in<br>
     <a href="{% url 'accounts:signup' %}">(Register</a>

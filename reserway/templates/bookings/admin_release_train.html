@@ -7,9 +7,13 @@
     </style>
 </head>
 <div>
+    {% if user.is_superuser %}
     <form action="/admin_release_train/" method="POST">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Submit">
     </form>
+    {% else %}
+    Only admins can release trains
+    {% endif %}
 </div>
