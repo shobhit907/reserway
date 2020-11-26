@@ -1,11 +1,11 @@
-Hello from home.html
 
 {%if user.is_authenticated%}
    <p>LOGGED IN with username = {{user.username}}</p>
-   <a href="{% url 'accounts:logout' %}">Log Out</a>
+   <a href="{% url 'accounts:logout' %}">Log Out</a> &emsp;
+   <a href="{% url 'bookings:my_tickets' %}">My Tickets</a>
 {%else%}
     <p>You are not logged in</p>
-    <a href="{% url 'accounts:signup' %}">Signup</a>
+    <a href="{% url 'accounts:signup' %}">Signup</a> &emsp;
     <a href="{% url 'accounts:login' %}">Login</a>
 {%endif%}
 

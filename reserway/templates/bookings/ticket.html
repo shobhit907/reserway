@@ -5,22 +5,23 @@ Train Name:{{ticket.journey.train.train_name}}<br>
 Train Number:{{ticket.journey.train.id}}<br>
 From Station:{{ticket.journey.train.source_station}}<br>
 To Station:{{ticket.journey.train.dest_station}}<br>
+Class:{{ticket.seat_type}}<br>
 <br>
-Passenger 1 : Name: {{ticket.passenger1.name}}&emsp; Age:{{ticket.passenger1.age}} &emsp; Gender:{{ticket.passenger1.gender}}<br>
+Passenger 1 &emsp; Name: {{ticket.passenger1.name}}&emsp; Age: {{ticket.passenger1.age}} &emsp; Gender: {{ticket.passenger1.gender}} &emsp; Coach Number: {{seats.passenger1.0}} &emsp; Seat Number: {{seats.passenger1.1}} &emsp; Seat Type: {{seats.passenger1.2}}<br>
 {% if ticket.passenger2 %}
-Passenger 2 : Name: {{ticket.passenger2.name}}&emsp; Age:{{ticket.passenger2.age}} &emsp; Gender:{{ticket.passenger2.gender}}<br>
+Passenger 2 &emsp; Name: {{ticket.passenger2.name}}&emsp; Age: {{ticket.passenger2.age}} &emsp; Gender: {{ticket.passenger2.gender}}  &emsp; Coach Number: {{seats.passenger2.0}} &emsp; Seat Number: {{seats.passenger2.1}} &emsp; Seat Type: {{seats.passenger2.2}}<br>
 {% endif %}
 {% if ticket.passenger3 %}
-Passenger 3 : Name: {{ticket.passenger3.name}}&emsp; Age:{{ticket.passenger3.age}} &emsp; Gender:{{ticket.passenger3.gender}}<br>
+Passenger 3 &emsp; Name: {{ticket.passenger3.name}}&emsp; Age: {{ticket.passenger3.age}} &emsp; Gender: {{ticket.passenger3.gender}}  &emsp; Coach Number: {{seats.passenger3.0}} &emsp; Seat Number: {{seats.passenger3.1}} &emsp; Seat Type: {{seats.passenger3.2}}<br>
 {% endif %}
 {% if ticket.passenger4 %}
-Passenger 4 : Name: {{ticket.passenger4.name}}&emsp; Age:{{ticket.passenger4.age}} &emsp; Gender:{{ticket.passenger4.gender}}<br>
+Passenger 4 &emsp; Name: {{ticket.passenger4.name}}&emsp; Age: {{ticket.passenger4.age}} &emsp; Gender: {{ticket.passenger4.gender}}   &emsp; Coach Number: {{seats.passenger4.0}} &emsp; Seat Number: {{seats.passenger4.1}} &emsp; Seat Type: {{seats.passenger4.2}}<br>
 {% endif %}
 {% if ticket.passenger5 %}
-Passenger 5 : Name: {{ticket.passenger5.name}}&emsp; Age:{{ticket.passenger5.age}} &emsp; Gender:{{ticket.passenger5.gender}}<br>
+Passenger 5 &emsp; Name: {{ticket.passenger5.name}}&emsp; Age: {{ticket.passenger5.age}} &emsp; Gender: {{ticket.passenger5.gender}}   &emsp; Coach Number: {{seats.passenger5.0}} &emsp; Seat Number: {{seats.passenger5.1}} &emsp; Seat Type: {{seats.passenger5.2}}<br>
 {% endif %}
 {% if ticket.passenger6 %}
-Passenger 6 : Name: {{ticket.passenger6.name}}&emsp; Age:{{ticket.passenger6.age}} &emsp; Gender:{{ticket.passenger6.gender}}<br>
+Passenger 6 &emsp; Name: {{ticket.passenger6.name}}&emsp; Age: {{ticket.passenger6.age}} &emsp; Gender: {{ticket.passenger6.gender}}   &emsp; Coach Number: {{seats.passenger6.0}} &emsp; Seat Number: {{seats.passenger6.1}} &emsp; Seat Type: {{seats.passenger6.2}}<br>
 {% endif %}
 {% else %}
 You are not eligible to view this ticket

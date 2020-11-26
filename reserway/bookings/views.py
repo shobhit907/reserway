@@ -157,6 +157,45 @@ def viewTicket(request,ticket_id):
     else:
         context['permission']=True
         context['ticket']=ticket
+        context['seats']={}
+        if ticket.seat_type=="AC":
+            if ticket.passenger1:
+                obj=ACBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger1)
+                context['seats']['passenger1']=[obj.coachNumber,obj.seatNumber,CoachStructureAC.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger2:
+                obj=ACBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger2)
+                context['seats']['passenger2']=[obj.coachNumber,obj.seatNumber,CoachStructureAC.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger3:
+                obj=ACBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger3)
+                context['seats']['passenger3']=[obj.coachNumber,obj.seatNumber,CoachStructureAC.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger4:
+                obj=ACBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger4)
+                context['seats']['passenger4']=[obj.coachNumber,obj.seatNumber,CoachStructureAC.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger5:
+                obj=ACBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger5)
+                context['seats']['passenger5']=[obj.coachNumber,obj.seatNumber,CoachStructureAC.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger6:
+                obj=ACBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger6)
+                context['seats']['passenger6']=[obj.coachNumber,obj.seatNumber,CoachStructureSleeper.objects.get(seatNumber=obj.seatNumber).seatType]
+        elif ticket.seat_type=="Sleeper":
+            if ticket.passenger1:
+                obj=SleeperBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger1)
+                context['seats']['passenger1']=[obj.coachNumber,obj.seatNumber,CoachStructureSleeper.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger2:
+                obj=SleeperBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger2)
+                context['seats']['passenger2']=[obj.coachNumber,obj.seatNumber,CoachStructureSleeper.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger3:
+                obj=SleeperBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger3)
+                context['seats']['passenger3']=[obj.coachNumber,obj.seatNumber,CoachStructureSleeper.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger4:
+                obj=SleeperBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger4)
+                context['seats']['passenger4']=[obj.coachNumber,obj.seatNumber,CoachStructureSleeper.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger5:
+                obj=SleeperBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger5)
+                context['seats']['passenger5']=[obj.coachNumber,obj.seatNumber,CoachStructureSleeper.objects.get(seatNumber=obj.seatNumber).seatType]
+            if ticket.passenger6:
+                obj=SleeperBookingStatus.objects.get(journey=ticket.journey,ticket=ticket,passenger=ticket.passenger6)
+                context['seats']['passenger6']=[obj.coachNumber,obj.seatNumber,CoachStructureSleeper.objects.get(seatNumber=obj.seatNumber).seatType]
     return render(request,'bookings/ticket.html',context)
 
 
@@ -165,5 +204,4 @@ def myTickets(request):
     if request.user.is_authenticated:
         tickets=Ticket.objects.filter(booking_agent=request.user.booking_agent)
         context['tickets']=tickets
-        print(tickets)
     return render(request,'bookings/my_tickets.html',context)
