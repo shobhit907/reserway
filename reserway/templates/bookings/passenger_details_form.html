@@ -1,7 +1,17 @@
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6); background-repeat: no-repeat; height: 100%;}
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;  margin: 0; position: absolute; top: 33%; left: 20%;}
+    </style>
+</head>
+<div>
 <form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="post">
     {% csrf_token %}
     <label for="seatType">Seat Type: </label>
     {{form.seat_type}}
+    <br>
     <br>
     <label for="passenger1Name">Passenger 1 Name: </label>
     {{form.passenger1Name}}
@@ -57,5 +67,7 @@
     <label for="passenger6Gender">Passenger 6 Gender: </label>
     {{form.passenger6Gender}}
     <br>
+    <br>
     <input type="submit" value="Submit">
 </form>
+</div>

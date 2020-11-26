@@ -4,6 +4,7 @@
         h1 {text-align: center;}
         p {text-align: center;}
         div {text-align: center;  margin: 0; position: absolute; left: 42%;}
+        .c2 {text-align: center;  margin: 0; position: absolute; top: 30%; left: 23%;}
     </style>
 </head>
 {%if user.is_authenticated%}
@@ -16,19 +17,20 @@
     <a href="{% url 'accounts:login' %}">Login)</a></p>
 {%endif%}
 
-<div>
-        
+<div>    
     <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Submit">
     </form>
 </div>
-<p></p>
-{% for journey_id,train_id,train_name,rem_ac_seats,rem_sleeper_seats,journey_date,source_station,dest_station in trains %}
-Journey id : {{journey_id}} &emsp; Train name : {{train_name}} &emsp; AC Seats : {{rem_ac_seats}} &emsp; Sleeper Seats : {{rem_sleeper_seats}} &emsp; {{journey_date}} &emsp; {{source_station}} &emsp; {{dest_station}}
-<form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Book">
-</form>
-{% endfor %}
+<div class = "c2">
+    {% for journey_id,train_id,train_name,rem_ac_seats,rem_sleeper_seats,journey_date,source_station,dest_station in trains %}
+    Journey id : {{journey_id}} &emsp; Train name : {{train_name}} &emsp; AC Seats : {{rem_ac_seats}} &emsp; Sleeper Seats : {{rem_sleeper_seats}} &emsp; {{journey_date}} &emsp; {{source_station}} &emsp; {{dest_station}}
+    <form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="POST">
+        {% csrf_token %}
+        <br>
+        <input type="submit" value="Book">
+    </form>
+    {% endfor %}
+</div>

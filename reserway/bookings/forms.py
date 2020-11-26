@@ -1,16 +1,23 @@
 from django import forms
-from .models import Station
+from .models import Station, Train
 
-class TrainDetailsForm(forms.Form):
-    trainName = forms.CharField(label='Train Name:', max_length=100, required=True)
-    source = forms.CharField(label='Source:', max_length=100, required=True)
-    destination = forms.CharField(label='Destination:', max_length=100, required=True)
+# class TrainDetailsForm(forms.Form):
+#     trainName = forms.CharField(label='Train Name:', max_length=100, required=True)
+#     source = forms.CharField(label='Source:', max_length=100, required=True)
+#     destination = forms.CharField(label='Destination:', max_length=100, required=True)
 
-class TrainScheduleForm(forms.Form):
-    train_name = forms.CharField(label='Train Name:', max_length=100, required=True)
-    journey_date=forms.DateTimeField()
+class AdminReleaseTrainForm(forms.Form):
+    all_trains=Train.objects.all()
+    train = forms.ModelChoiceField(queryset=all_trains,blank=False,required=True)
+    journey_date=forms.DateField(widget=forms.widgets.DateTimeInput(attrs={"type":"date"}))
     num_ac_coaches = forms.IntegerField(max_value=100, min_value=0,required=True)
     num_sleeper_coaches = forms.IntegerField(max_value=100, min_value=0,required=True)
+
+# class TrainScheduleForm(forms.Form):
+#     train_name = forms.CharField(label='Train Name:', max_length=100, required=True)
+#     journey_date=forms.DateTimeField()
+#     num_ac_coaches = forms.IntegerField(max_value=100, min_value=0,required=True)
+#     num_sleeper_coaches = forms.IntegerField(max_value=100, min_value=0,required=True)
 
 class PassengerDetailsForm(forms.Form):
     seat_type= forms.ChoiceField(label="Seat type:", choices=[("AC", "AC"), ("Sleeper", "Sleeper")])

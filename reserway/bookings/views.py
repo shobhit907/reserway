@@ -5,7 +5,7 @@ import datetime,time
 from django.http import JsonResponse
 from .models import TrainSchedule,BookingStatus
 from django.shortcuts import render
-from .forms import PassengerDetailsForm,TrainScheduleForm
+from .forms import PassengerDetailsForm, AdminReleaseTrainForm
 from .models import * 
 import datetime
 
@@ -158,3 +158,23 @@ def viewTicket(request,ticket_id):
         context['permission']=True
         context['ticket']=ticket
     return render(request,'bookings/ticket.html',context)
+
+def AdminReleaseTrain(request):
+    if request.method == 'POST':
+        form = AdminReleaseTrainForm(request.POST)
+        if form.is_valid():
+            p = TrainSchedule.objects.create(
+                train = form.cleaned_data['train'],
+                journey_date = form.cleaned_data['journey_date'],
+                num_ac_coaches = form.cleaned_data['num_ac_coaches'],
+                num_sleeper_coaches = form.cleaned_data['num_sleeper_coaches'],
+            )
+            p2 = BookingStatus.objects.create(
+                journey=p,
+                noOfACSeatsRemaining=p.num_ac_coaches * 18,
+                noOfSleeperSeatsRemaining=p.num_sleeper_coaches * 24,
+            )
+            return HttpResponseRedirect('/')
+    else:
+        form = AdminReleaseTrainForm()
+    return render(request, 'bookings/admin_release_train.html', {'form': form})

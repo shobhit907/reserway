@@ -1,3 +1,12 @@
+<head>
+    <style>
+        body {background-image: linear-gradient(#a8ff78, #78ffd6); background-repeat: no-repeat; height: 100%;}
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;  margin: 0; position: absolute; top: 35%; left: 40%;}
+    </style>
+</head>
+<div>
 {% if permission %}
 Ticket Number:{{ticket.ticketId}}<br>
 PNR Number:{{ticket.pnrNumber}}<br>
@@ -25,3 +34,4 @@ Passenger 6 : Name: {{ticket.passenger6.name}}&emsp; Age:{{ticket.passenger6.age
 {% else %}
 You are not eligible to view this ticket
 {% endif %}
+</div>
