@@ -68,7 +68,7 @@ def PassengerDetailsFormPage(request,journey_id):
                 current_bookings=seat.noOfACSeatsRemaining
                 if current_bookings<p_count:
                     #cannot book
-                    return HttpResponseRedirect('')
+                    return HttpResponseRedirect('/sorry/')
                 else:
                     BookingStatus.objects.filter(journey__journey_id=j_id).update(noOfACSeatsRemaining=current_bookings-p_count)
                     ticket = Ticket.objects.create(journey=TrainSchedule.objects.get(journey_id=journey_id),seat_type="AC",pnrNumber=pnr,booking_agent=ba,passenger1=p1,passenger2=p2,passenger3=p3,passenger4=p4,passenger5=p5,passenger6=p6)
@@ -97,7 +97,7 @@ def PassengerDetailsFormPage(request,journey_id):
                 current_bookings=seat.noOfSleeperSeatsRemaining
                 if current_bookings<p_count:
                     #cannot book
-                    return HttpResponseRedirect('')
+                    return HttpResponseRedirect('/sorry/')
                 else:
                     BookingStatus.objects.filter(journey__journey_id=j_id).update(noOfSleeperSeatsRemaining=current_bookings-p_count)
                     ticket = Ticket.objects.create(journey=TrainSchedule.objects.get(journey_id=journey_id),seat_type="Sleeper",pnrNumber=pnr,booking_agent=ba,passenger1=p1,passenger2=p2,passenger3=p3,passenger4=p4,passenger5=p5,passenger6=p6)
@@ -205,3 +205,7 @@ def AdminReleaseTrain(request):
     else:
         form = AdminReleaseTrainForm()
     return render(request, 'bookings/admin_release_train.html', {'form': form})
+
+
+def Sorry(request):
+    return render(request,'bookings/sorry.html')

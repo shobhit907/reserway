@@ -29,7 +29,7 @@
 <div class = "c2">
     {% if POST %}
     {% for journey_id,train_id,train_name,rem_ac_seats,rem_sleeper_seats,journey_date,source_station,dest_station in trains %}
-    Journey id : {{journey_id}} &emsp; Train name : {{train_name}} &emsp; From {{source_station}} To {{dest_station}} &emsp; AC Seats : {{rem_ac_seats}} &emsp; Sleeper Seats : {{rem_sleeper_seats}} 
+    Journey id : {{journey_id}} &emsp; Train ID : {{train_id}} &emsp; Train name : {{train_name}} &emsp; From {{source_station}} To {{dest_station}} on {{journey_date}} &emsp; AC Seats : {{rem_ac_seats}} &emsp; Sleeper Seats : {{rem_sleeper_seats}} 
     <form action="{% url 'bookings:passenger_details_form' journey_id=journey_id %}" method="POST">
         {% csrf_token %}
         <br>

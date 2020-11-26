@@ -9,7 +9,7 @@
 <body>
     <div>
         <h1>
-        <form action="/f_search/train_search/" method="POST">
+        <form action="/f_search/" method="POST">
             {% csrf_token %}
             <label for="form.source.id_for_label"><b>Source Station&emsp; &emsp;: &emsp;</b></label>
             {{form.source}}
